@@ -358,12 +358,12 @@ GameObject:
   - component: {fileID: 297649456}
   - component: {fileID: 297649455}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &297649454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 1180155928}
   - component: {fileID: 1180155931}
   - component: {fileID: 1180155930}
+  - component: {fileID: 1180155929}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -868,6 +869,32 @@ Transform:
   m_Father: {fileID: 1689958808}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1180155929
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180155927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 0.99999994}
+  m_EdgeRadius: 0
 --- !u!23 &1180155930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1065,8 +1092,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1180155930}
---- !u!61 &1689958810
-BoxCollider2D:
+  text: '*watering plant* i''m not the only one who gotta stay hydrated...'
+--- !u!58 &1689958810
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1079,18 +1107,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
+  m_Radius: 1.7853236
 --- !u!23 &1689958811
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1270,6 +1288,7 @@ MonoBehaviour:
   speed: 5000
   rig: {fileID: 1812743044}
   dialogManager: {fileID: 2079241023}
+  closestInteractible: {fileID: 0}
 --- !u!4 &1812743043
 Transform:
   m_ObjectHideFlags: 0
@@ -1430,7 +1449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: -190}
   m_SizeDelta: {x: 700, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079241021
@@ -1453,8 +1472,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'let''s make some games ! let''s make some games ! let''s make some games
-    ! let''s make some games ! let''s make some games ! '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffafc4ac0ce17e145ac336da4e725a86, type: 2}
   m_sharedMaterial: {fileID: 21528821694995116, guid: ffafc4ac0ce17e145ac336da4e725a86,
@@ -1490,7 +1508,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1503,7 +1521,7 @@ MonoBehaviour:
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_isTextTruncated: 1
+  m_isTextTruncated: 0
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
@@ -1524,13 +1542,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2079241021}
-    characterCount: 100
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 20
-    wordCount: 16
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 2
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1567,10 +1585,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bed7cea7773dcc41880b74fbc0b6864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lettersPerSec: 10
+  lettersPerSec: 20
   text: {fileID: 2079241021}
-  skipText: 0
-  reading: 0
+  background: {fileID: 297649453}
+  state: 0
 --- !u!1 &2111143436
 GameObject:
   m_ObjectHideFlags: 0
