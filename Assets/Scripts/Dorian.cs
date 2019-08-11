@@ -8,6 +8,7 @@ public class Dorian : MonoBehaviour {
     public Rigidbody2D rig;
     public DialogManager dialogManager;
     public Interactible closestInteractible;
+    public List<Arrow> legs;
 
     hGamepad gamepad { get { return hinput.gamepad[0]; } }
 
@@ -15,6 +16,23 @@ public class Dorian : MonoBehaviour {
         if (DialogManager.instance.state != DialogManager.S.READING
         && DialogManager.instance.state != DialogManager.S.DONE) {
             rig.AddForce(gamepad.leftStick.worldPositionCamera * speed * Time.deltaTime);
+        }
+
+        if (gamepad.leftStick.inPressedZone) {
+            
+            transform.rotation = Quaternion.Euler(new Vector3 (
+                transform.rotation.x, 
+                transform.rotation.y, 
+                gamepad.leftStick.angle
+            ));
+
+            foreach(Arrow leg in legs) {
+                leg.isStopped = false;
+            }
+        } else {
+            foreach(Arrow leg in legs) {
+                leg.isStopped = true;
+            }
         }
 
         if (gamepad.A.justPressed) {
