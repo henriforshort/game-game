@@ -3,10 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Interactible : MonoBehaviour {
-    public MeshRenderer overlay;
-    public string text;
+    public List<MeshRenderer> overlay;
+    public int previousLine;
+    public List<string> text;
+    public bool canInteract;
 
     public void Interact () {
-        DialogManager.instance.Display(text);
+        if (canInteract) {
+            DialogManager.instance.Display(GetText());
+        }
+    }
+
+    protected virtual string GetText () {
+        int randomNumber = Random.Range(0, text.Count);
+
+        if (text.Count > 1) {
+            while (randomNumber == previousLine) {
+                randomNumber = Random.Range(0, text.Count);
+            }
+        }
+
+        previousLine = randomNumber;
+
+        return text [randomNumber];
     }
 }
