@@ -48,7 +48,7 @@ public class Background : MonoBehaviour {
 
     public float multiplier {
         get {
-            float nb = Mathf.Clamp(1/(currentColor.r + currentColor.g), 1, 10);
+            float nb = Mathf.Clamp(1/(currentColor.r + currentColor.g), 1, 3);
             return nb;
         }
     }

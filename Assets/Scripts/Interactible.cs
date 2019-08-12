@@ -12,7 +12,11 @@ public abstract class Interactible : MonoBehaviour {
         if (canInteract) {
             DialogManager.instance.Display(GetText());
         }
+
+        AfterInteract ();
     }
+
+    protected virtual void AfterInteract () { }
 
     protected virtual string GetText () {
         int randomNumber = Random.Range(0, text.Count);
