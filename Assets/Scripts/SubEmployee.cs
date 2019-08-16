@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SubEmployee : Interactible {
-    private bool dodoHasSub;
     public GameObject giantArrow;
     public Couch couch;
+    public GameObject sub;
 
     public void Update () {
     }
@@ -38,6 +38,7 @@ public class SubEmployee : Interactible {
         canInteract = false;
         couch.canInteract = true;
         giantArrow.SetActive(true);
+        sub.SetActive(true);
 
         return s;
     }

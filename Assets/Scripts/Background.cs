@@ -9,13 +9,6 @@ public class Background : MonoBehaviour {
 
     public Color currentColor;
 
-    [Range(0,256)]
-    public float r;
-    [Range(0,256)]
-    public float g;
-    [Range(0,256)]
-    public float b;
-
     public bool changingRed;
 
     private void Update  () {
@@ -39,17 +32,12 @@ public class Background : MonoBehaviour {
             if (currentColor.g >= 1) speed *= -1;
         }
 
-        r = currentColor.r * 256;
-        g = currentColor.g * 256;
-        b = currentColor.b * 256;
-
         material.color = currentColor;
     }
 
     public float multiplier {
         get {
-            float nb = Mathf.Clamp(1/(currentColor.r + currentColor.g), 1, 3);
-            return nb;
+            return Mathf.Clamp(1/(currentColor.r + currentColor.g), 1, 3);
         }
     }
 }

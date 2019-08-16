@@ -17,7 +17,9 @@ public class DialogManager : MonoBehaviour {
     }
 
     public void Update () {
-        if (state == S.DONE && hinput.gamepad[0].A.justPressed) {
+        if (state == S.DONE && 
+            (hinput.gamepad[0].A.justPressed  || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        ) {
             text.text = "";
             background.SetActive(false);
             state = S.OFF;

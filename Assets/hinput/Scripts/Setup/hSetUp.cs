@@ -14,7 +14,7 @@ public class hSetup {
 
 
 	// Add newInputsDir at the end of inputManagerDir
-	[MenuItem("Tools/hinput/Setup hinput")]
+	// [MenuItem("Tools/hinput/Setup hinput")]
 	public static void hinputSetup () {
 		Debug.LogWarning("Setting up hinput... ");
 
@@ -22,13 +22,13 @@ public class hSetup {
 			sw.Write(GetInputs());
 		}
 
-		AssetDatabase.Refresh();
+		// AssetDatabase.Refresh();
 
 		Debug.LogWarning("hinput has been set up properly. You can start coding !");
 	}
 
 	// Allow to use hinputSetup only if it has not been clicked before.
-	[MenuItem("Tools/hinput/Setup hinput", true)]
+	// [MenuItem("Tools/hinput/Setup hinput", true)]
 	public static bool hinputSetupValidation () {
 		string gamepadInputs = GetInputs();		
 		string oldGamepadInputs = File.ReadAllText(inputManagerDir);

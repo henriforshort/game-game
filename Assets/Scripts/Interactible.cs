@@ -5,10 +5,15 @@ using UnityEngine;
 public abstract class Interactible : MonoBehaviour {
     public List<MeshRenderer> overlay;
     public int previousLine;
+    [TextArea]
     public List<string> text;
     public bool canInteract;
 
-    public void Interact () {
+    public virtual void BeforeInteract () {
+        Interact ();
+    }
+
+    protected void Interact () {
         if (canInteract) {
             DialogManager.instance.Display(GetText());
         }
